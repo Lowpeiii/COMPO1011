@@ -1,0 +1,76 @@
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(){
+    main:
+    	printf (">Welcome to Coffee Contacts!\n");
+    	printf ("\n");
+    	char input;
+    	printf (">Please input: ");
+    	printf ("\n(Note: please input single alphabet) ");
+    	printf ("\n");
+    	printf
+    	  (" -> i -- show all contacts\n -> a -- add a new contact\n -> m -- modify a contact\n -> d -- delete a contact\n -> s -- search a contact by name\n -> q -- quit the program\n ");
+    	printf("\n>");
+    	scanf ("%c", &input);
+    	switch (input)
+    	  {
+    	  case 'i':
+    // 	  if (conc_counter==100){
+    // 	      printf("Maximum contact persons reached!\n");
+    // 	      break;
+    // 	  } else    fshowall (*head);
+    	    break;
+    	    //return rep;?
+    
+    	  case 'a':
+    	   // fadd (*head); 
+    	    break;
+    
+    	  case 'm':
+    	   // fmodify (*head);
+    	    break;
+    
+    	  case 'd':
+    	   // fdelete (*head);
+    	    break;
+    
+    	  case 's':
+    	   // fsearch (*head);
+    	    break;
+    
+    	  case 'q':
+    	    printf("Are you sure you want to quit?\n");
+    	    break;
+    	    
+    	  default :
+    	    printf("Invalid code entered.\n");
+    	    break;
+
+	  }
+    	int ch;
+        printf("\nReturn to main menu or quit the program?\n\n0 -- Main Menu\t\t1 -- Quit\n");
+        scanf("%d",&ch);
+        switch (ch) {
+        case 0:
+            main();
+        case 1:
+            break;
+        default:
+            printf("Invalid code entered.");
+            break;
+        }
+        fflush(stdin);
+    
+
+    return 0;
+}

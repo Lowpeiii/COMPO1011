@@ -1,0 +1,196 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+
+// structure
+struct Records
+{
+   char name[255], company[255], phone[15], email[255];
+   struct Records *next;
+};
+
+// functions
+void fshowall(struct Records *head)
+{
+   system("cls");
+   int n = 1;
+   struct Records *temp = head;
+   printf("No.\tName\tCompany\tPhone\tE-mail");
+   while (temp != NULL)
+   {
+      printf("\n%d\t%s\t%s\t%s\t%s", n, temp->name, temp->company, temp->phone, temp->email);
+      temp = temp->next;
+   }
+}
+
+void fadd(struct Records *head)
+{
+   struct Records *temp = head;
+   while (temp->next != nullptr)
+   {
+      temp = temp->next;
+   }
+   struct Records *addconc = malloc(sizeof(Records));
+   system("cls");
+   printf(">Please input the Name: ");
+   gets("%s", addconc->name);
+   printf("\n>Please input the Company: ");
+   gets("%s", addconc->company);
+   printf("\n>Please input the Phone: ");
+   scanf("%s", addconc->phone);
+   printf("\n>Please input the E-mail: ");
+   scanf("%s", addconc->email);
+   temp->next = addconc;
+   printf("\n>Contact added!");
+}
+
+void fmodify(struct Records *head, int conc_counter)
+{
+   struct Records *temp = head;
+   system("cls");
+   printf(">Please input the No. of contact to be modify: ");
+   int n = 0;
+   scanf("%s", n);
+   if (n > conc_counter)
+   {
+      printf("\nContact not found!");
+       return;
+   }
+   for (int i = 1; i < n; i++)
+   {
+      temp = temp->next;
+   }
+   printf("Previous contact information is:\n");
+   printf("No.%d\tName: %s\tCompany: %s\tPhone: %s\tE-mail: %s", n, temp->name, temp->company, temp->phone, temp->email);
+   printf(">Please input the Name: ");
+   gets("%s", temp->name);
+   printf("\n>Please input the Company: ");
+   gets("%s", temp->company);
+   printf("\n>Please input the Phone: ");
+   scanf("%s", temp->phone);
+   printf("\n>Please input the E-mail: ");
+   scanf("%s", temp->email);
+   printf("\n>Contact updated!");
+}
+
+void fdelete(struct Records *head, int conc_counter)
+{
+   struct Records **temp = &head;
+   (">Please input the No. of contact to be deleted: ");
+   int n = 0;
+   scanf("%s", n);
+   if (n > conc_counter)
+   {
+      printf("\nContact not found!");
+      return;
+   } 
+   for (int i = 1; i < n; i++)
+   {
+      temp=&(temp->next); 
+   }
+   *temp= temp->next;
+   }
+   printf("\nContact deleted!");
+}
+
+void fsearch(struct Records *head)
+{
+   // ask for input
+   //  partial names?
+   // find in files
+   //  read from files
+}
+
+// void fquit (){
+// break;
+// system("cls");
+//   }
+
+int main()
+{
+   // condition
+   struct Records *head = nullptr;
+   int i, conc_counter = 0;
+
+   // FILE SETTING
+   FILE *fptr;
+   fptr = fopen("conctactlist.txt", "r+");
+  // while (fscanf(fptr, "%d\t%s\t%s\t%s\t%s\n", head->no, head->name, head->company, head->phone, head->email) != EOF)
+   {
+      //     *head = file?
+      conc_counter++;
+   }
+   fclose(fptr);
+main:
+   // while(int rep=1){
+   system("cls");
+   printf(">Welcome to Coffee Contacts!\n");
+   printf("\n");
+   char input;
+   printf(">Please input: ");
+   printf("\n(Note: please input single alphabet) ");
+   printf("\n");
+   printf(" -> i -- show all contacts\n -> a -- add a new contact\n -> m -- modify a contact\n -> d -- delete a contact\n -> s -- search a contact by name\n -> q -- quit the program\n ");
+   scanf("%c", &input);
+   switch (input)
+   {
+   case 'i':
+      fshowall(*head);
+      break;
+      // return rep;?
+
+   case 'a':
+      if (conc_counter == 100)
+      {
+         printf("Maximum contact persons reached!\n");
+         break;
+      }
+      else
+      {
+         fadd(*head);
+         conc_counter++;
+      }
+      break;
+
+   case 'm':
+      fmodify(*head, conc_counter);
+      break;
+
+   case 'd':
+      fdelete(*head, conc_counter);
+      break;
+
+   case 's':
+      fsearch(*head);
+      break;
+
+   case 'q':
+      printf("Are you sure you want to quit?");
+      break;
+
+   default:
+      printf("Invalid code entered.");
+      break;
+   }
+   // fptr = fopen("conctactlist.txt", "r");
+   // while (*head != EOF)
+   // {
+   //    //  fprintf(fptr, *head, ...);
+   //    fclose(fptr);
+   // }
+}
+// choices before main menu
+// int ch;
+// printf("\n\n\nReturn to main menu or quit the program?\n\n\t0-- Main Menu\t\t1 -- Quit\n");
+// scanf("%d", &ch);
+// switch (ch)
+// {
+// case 0:
+//    goto main case 1 : break;
+// default:
+//    printf("Invalid code entered.");
+//    break;
+// }
+return 0;
+}
